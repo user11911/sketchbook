@@ -42,3 +42,8 @@ sketchbook.addEventListener("mouseover", (e) => {
         }
     }    
 });
+//reset button
+reset_btn.addEventListener("click", () => {
+    sketchbook.innerHTML = "";
+    size_input.value = "";
+})
