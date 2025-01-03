@@ -1,9 +1,26 @@
+
+@media(prefers-color-scheme: dark) {
+    :root{
+        --background: #111;
+        --secondary: #333;
+        --text: #fff;
+    }
+}
+@media(prefers-color-scheme: light) {
+    :root{
+        --background: #fff;
+        --secondary: #ddd;
+        --text: #000;
+    }
+}
 *{
 
     box-sizing: border-box;
     padding:0; margin:0;
+    color: var(--text);
 }
 body{
+    background-color: var(--background);
     width: 100%;
     display: flex;
     flex-direction:column;
@@ -15,7 +32,7 @@ body{
     margin:20px;
 }
 #sketchbook {
-    border: 1px solid black;
+    border: 1px solid var(--text);
     display:flex;
     flex-direction:column;
     flex-wrap: wrap;
@@ -24,5 +41,13 @@ body{
 }
 #opacity_input{
     width: 105px;
+}
+input, button, select{
+    background-color: var(--secondary);
+    border: 0;
+}
+::placeholder{
+    color: var(--text);
+    opacity: 0.7
 }
 

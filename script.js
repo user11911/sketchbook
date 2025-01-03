@@ -43,11 +43,17 @@ sketchbook.addEventListener("mouseover", (e) => {
                     break;
             }
         } else {
-            let currentColor = e.target.style.backgroundColor;
-            let currentOpacity = parseFloat(currentColor.split(",")[3].replace(")", ""));
-            if(currentOpacity < 1 - opacity){
-                let newOpacity = currentOpacity + opacity;
-                e.target.style.backgroundColor = currentColor.replace(currentOpacity, newOpacity);
+            if(color_input.value === "eraser"){
+                e.target.style.backgroundColor = "transparent";
+            }else if(e.target.style.backgroundColor.split(".")[0] == color_input.value.split(".")[0] || color_input.value === ""){
+                let currentColor = e.target.style.backgroundColor;
+                let currentOpacity = parseFloat(currentColor.split(",")[3].replace(")", ""));
+                if(currentOpacity < 1 - opacity){
+                    let newOpacity = currentOpacity + opacity;
+                    e.target.style.backgroundColor = currentColor.replace(currentOpacity, newOpacity);
+                }
+            }else{
+                e.target.style.backgroundColor = color_input.value.replace(/0\.1\)$/, `${opacity})`);
             }
         }
     }    
