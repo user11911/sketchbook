@@ -11,8 +11,8 @@ body{
 }
 #personalizations{
     display:flex; flex-direction: row;
-    width: auto;
-    margin:20px 0;
+    width: 500px;
+    margin:20px;
 }
 #sketchbook {
     border: 1px solid black;
@@ -21,5 +21,8 @@ body{
     flex-wrap: wrap;
     width: 500px;
     height:500px;
+}
+#opacity_input{
+    width: 105px;
 }
 
