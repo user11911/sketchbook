@@ -4,6 +4,7 @@ let size_input_btn = document.querySelector("#size_input_button");
 let reset_btn = document.querySelector("#reset_sketchbook_button");
 let sketchbook = document.querySelector("#sketchbook")
 let color_input = document.querySelector("#color_input");
+let opacity_input = document.querySelector("#opacity_input");
 //creates n boxes based on input
 
 size_input_btn.addEventListener("click", () => {
@@ -65,7 +66,13 @@ sketchbook.addEventListener("mouseover", (e) => {
             }else if(color_input.value.split(".")[0] != e.target.style.backgroundColor.split(".")[0]){
                 switch(color_input.value){
                     case "":
-                        e.target.style.backgroundColor = `rgba(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, 0.8)`;
+                        let newOpacity;
+                        let currentColor = e.target.style.backgroundColor;
+                        let currentOpacity = parseFloat(currentColor.split(",")[3].replace(")", ""));
+                        if(currentOpacity < 0.96){
+                            newOpacity = currentOpacity + 0.08;
+                        e.target.style.backgroundColor = currentColor.replace(currentOpacity, newOpacity);
+                        }
                         break;
                     case "rgba(0, 0, 0, 0.1)":
                         e.target.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
